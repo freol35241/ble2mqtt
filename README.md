@@ -10,4 +10,19 @@ docker run --network=host ghcr.io/freol35241/ble2mqtt
 ```
 
 ## command-line options
-`TODO`
+````
+positional arguments:
+  host                  Hostname of MQTT broker
+  port                  Port number of MQTT broker
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -u USERNAME, --username USERNAME
+                        Username to use for accessing the MQTT broker
+  -p PASSWORD, --password PASSWORD
+                        Password to use for accessing the MQTT broker
+  -b BASE_TOPIC, --base-topic BASE_TOPIC
+                        Base topic onto which all advertisements will be published
+  -d DEVICE, --device DEVICE
+                        HCI device number to use for connecting to the bluetooth device
+```

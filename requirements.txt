@@ -1,0 +1,4 @@
+--extra-index-url=https://www.piwheels.org/simple
+aioblescan==0.2.8
+bleparser==1.1.0
+paho-mqtt==1.5.1
