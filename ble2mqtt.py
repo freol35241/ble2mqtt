@@ -20,7 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""ble2mqtt - simple python script acting as a one-way gateway for advertisement packets from ble to mqtt"""
+"""ble2mqtt - simple python script acting as a one-way gateway for advertisement
+packets from ble to mqtt"""
 
 import asyncio
 import logging
@@ -33,6 +34,11 @@ import paho.mqtt.client as mqtt
 
 
 def run(config: argparse.Namespace):
+    """Main function setting up and running the gateway functionality
+
+    Args:
+        config (argparse.Namespace): argparse command line config
+    """
 
     ## Setup MQTT connection
     client = mqtt.Client()
@@ -44,11 +50,11 @@ def run(config: argparse.Namespace):
     client.loop_start()  # Will handle reconnections automatically
 
     ## Setup parser
-    parser = BleParser(discovery=True, filter_duplicates=True)
+    ble_parser = BleParser(discovery=True, filter_duplicates=True)
 
     ## Define callback
     def process_hci_events(data):
-        sensor_data, tracker_data = parser.parse_data(data)
+        sensor_data, tracker_data = ble_parser.parse_data(data)
 
         logging.debug("Received sensor data: %s", sensor_data)
         logging.debug("Received tracker data: %s", tracker_data)
